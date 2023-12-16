@@ -1,0 +1,68 @@
+@base_url = http://localhost:8080
+@version = v1
+# @email = {{register.request.body.$.email}}
+# @password = {{register.request.body.$.password}}
+@access_token = {{authenticate.response.body.$.data.access_token}}
+@cookie = {{authenticate.response.headers.Set-Cookie}}
+
+###
+# @name register
+POST {{base_url}}/api/{{version}}/register HTTP/1.1
+Content-Type: application/json
+Accept: */*
+
+{
+  "first_name": "vin",
+  "last_name": "cent",
+  "email": "vincent@gmail.com",
+  "phone": "0123456789",
+  "password": "123456Aa@"
+}
+
+###
+# @name authenticate
+POST {{base_url}}/api/{{version}}/authenticate HTTP/1.1
+Content-Type: application/json
+Accept: */*
+
+{
+  "email": "vincent@gmail.com",
+  "password": "123456Aa@"
+}
+
+###
+# @name refresh_token
+POST {{base_url}}/api/{{version}}/refresh-token HTTP/1.1
+Accept: */*
+Cookie: {{cookie}}
+
+###
+# @name info
+GET {{base_url}}/api/{{version}}/me HTTP/1.1
+Content-Type: application/json
+Accept: */*
+Authorization: Bearer {{access_token}}
+
+###
+# @name modify
+PATCH {{base_url}}/api/{{version}}/me/modify HTTP/1.1
+Content-Type: application/json
+Accept: */*
+Authorization: Bearer {{access_token}}
+
+{
+  "last_name": "vin"
+}
+
+###
+# @name list_files
+POST {{base_url}}/api/{{version}}/search/files HTTP/1.1
+Content-Type: application/json
+Accept: */*
+Authorization: Bearer {{access_token}}
+
+{
+  "name": "a",
+  "extension": ".txt",
+  "file_created_at_start_time": "2023-10-10T00:00:00+07:00"
+}

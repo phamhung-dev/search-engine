@@ -1,0 +1,84 @@
+version: '3.9'
+
+networks:
+  search-engine:
+
+services:
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ${APP_NAME}-server:latest
+    container_name: ${APP_NAME}-server
+    restart: always
+    ports:
+      - 8080:8080
+    expose:
+      - 8080
+    volumes:
+      - server:/app
+    depends_on:
+      - index
+    networks:
+      - search-engine
+
+  index:
+    image: postgres
+    container_name: ${APP_NAME}-index
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    ports:
+      - 5432:5432
+    expose:
+      - 5432
+    volumes:
+      - index:/var/lib/postgresql/data
+    networks:
+      - search-engine
+
+  cache:
+    image: redis
+    container_name: ${APP_NAME}-cache
+    restart: always
+    ports:
+      - 6379:6379
+    expose:
+      - 6379
+    volumes:
+      - cache:/data
+    networks:
+      - search-engine
+    command: ["redis-server", "--requirepass ${REDIS_PASSWORD}"]
+
+  object-storage:
+    image: minio/minio
+    container_name: ${APP_NAME}-object-storage
+    restart: always
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD}
+    ports:
+      - 9090:9090
+      - 9000:9000
+    expose:
+      - 9000
+      - 9090
+    volumes:
+      - object-storage:/data
+    networks:
+      - search-engine
+    command: server /data --console-address ":9090"
+
+volumes:
+  server:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: .
+  index:
+  cache:
+  object-storage:
