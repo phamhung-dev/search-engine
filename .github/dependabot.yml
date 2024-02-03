@@ -1,10 +1,18 @@
 version: 2
 updates:
   - package-ecosystem: "gomod"
-    directory:
-      - "/beego-search-server"
-      - "/gingonic-search-server"
-      - "/search-bot/linux-search-bot"
-      - "/search-bot/windows-search-bot"
+    directory: "/beego-search-server"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "gomod"
+    directory: "/gingonic-search-server"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "gomod"
+    directory: "/search-bot/linux-search-bot"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "gomod"
+    directory: "/search-bot/windows-search-bot"
     schedule:
       interval: "daily"
