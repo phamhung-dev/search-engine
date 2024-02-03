@@ -6,7 +6,7 @@ require github.com/beego/beego/v2 v2.1.0
 
 require (
 	github.com/beego/bee/v2 v2.1.0
-	github.com/lib/pq v1.10.5
+	github.com/lib/pq v1.10.9
 )
 
 require github.com/golang-jwt/jwt v3.2.2+incompatible
