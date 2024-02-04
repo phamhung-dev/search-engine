@@ -3,7 +3,7 @@
 ---
 # SEARCH ENGINE FOR FILES ON A COMPUTER
 
-![alt](https://img.shields.io/badge/go%20version-%3D%201.21.3-brightgreen) ![alt](https://img.shields.io/badge/platform-linux%20%7C%20windows-lightgrey) ![alt](https://img.shields.io/badge/build-passing-brightgreen) ![alt](https://img.shields.io/badge/coverage-100%25-brightgreen) [![Facebook Badge](https://img.shields.io/badge/facebook-%40phamhung-blue)](https://www.facebook.com/phamhung.dev/) [![LinkedIn Badge](https://img.shields.io/badge/linkedin-%40phamhung-dev-blue)](https://www.linkedin.com/in/phamhung-dev/) [![Github Bagde](https://img.shields.io/badge/github-%40phamhung-dev-blue)](https://github.com/phamhung-dev/)
+![alt](https://img.shields.io/badge/go%20version-%3D%201.21.3-brightgreen) ![alt](https://img.shields.io/badge/platform-linux%20%7C%20windows-lightgrey) ![alt](https://img.shields.io/badge/build-passing-brightgreen) ![alt](https://img.shields.io/badge/coverage-100%25-brightgreen) [![Facebook Badge](https://img.shields.io/badge/facebook-%40phamhung.dev-blue)](https://www.facebook.com/phamhung.dev/) [![LinkedIn Badge](https://img.shields.io/badge/linkedin-%40phamhung--dev-blue)](https://www.linkedin.com/in/phamhung-dev/) [![Github Bagde](https://img.shields.io/badge/github-%40phamhung--dev-blue)](https://github.com/phamhung-dev/)
 
 (In the spirit of the Everything application - allowing quick search of everything on a computer), we have two services: FileIndex and FileSearch, each with specific tasks:
 
